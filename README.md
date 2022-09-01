@@ -105,3 +105,31 @@ const base64 = fileToBase64(file, scale)
 const { base64ToBlob } = require("common-plugs")
 const blob = base64ToBlob(base64)
 ```
+# watermark 设置网页水印
+```watermark(obj)```方法，该方法用于给网页添加水印，在需要添加水印的页面调用该方法即可。
+
+方法的入参有两种方式。
+
+方式1：追一传参，参数1是水印（可文字或图片<网络图片地址 & base64>）。参数2 是字体大小(文字入参有效)。参数3 透明度(0~1)，参数4旋转角度
+
+方式2：对象入参```{image: '我是水印', size: 20, opacity:1, rotate: 0, family:'Arial',scale:1.2}```, 对象入参的时候只需要传递一个obj对象就可以
+
+水印的文案可以是文字也可以直接是一张网络图片地址或者图片的base64编码。
+
+用法例如：
+```
+用法1
+const { watermark } = require("common-plugs")
+watermark("我是水印", 20, .5, 1)
+
+用法2
+const { watermark } = require("common-plugs")
+const url = "https://t7.baidu.com/it/u=2006997523,200382512&fm=193&f=GIF"
+watermark(url, 20, .5, 1)
+
+用法3
+const { watermark } = require("common-plugs")
+const obj = {image: '我是水印', size: 20, opacity:1, rotate: 0, family:'Arial',scale:1.2}
+watermark(obj)
+
+```
