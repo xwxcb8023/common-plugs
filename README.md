@@ -14,6 +14,7 @@ const newObj = clone(obj)
  如果两个对象中有相同属性的情况，参数2的同属性将会覆盖参数中相同的属性。最后返回一个新的对象。
  例如：
  ```
+const { mergeObject } = require("common-plugs")
 const obj1 = {name: "Kimi", hobby: ["Play basketball", "travel"]}
 const obj2 = {name: "Tom", age: 25; class: "深大商学院"}
 const newObj = mergeObject( obj1, obj2 )
@@ -23,11 +24,13 @@ const newObj = mergeObject( obj1, obj2 )
 ```generateArray(100, true)``` 方法，该方法可以生成n长度的0~n之间的随机数组，该方法有两个参数，第1个参数n为数值，表示需要生成的数组长度；第2个参数为布尔值，便是是否可出现重复
 (true为不重复，false为可重复)，例如：
 ```
+const { generateArray } = require("common-plugs")
 const arr = generateArray(100, true)
 ```
 # sortArray() 排序
 ```sortArray(arr)```方法，该方法用快速排序的方式该数值数组排序，该方法有两个参数，参数1为需要进行排序的数组；参数2为布尔值（默认为true-->升序，false--->降序），最后返回一个新数组，例如：
 ```
+const { sortArray } = require("common-plugs")
 const newArr = sortArray ([2,3,5,6,7,1,4,8,10,9])
 // newArr 为[1,2,3,4,5,6,7,8,9,10]
 ```
@@ -35,6 +38,7 @@ const newArr = sortArray ([2,3,5,6,7,1,4,8,10,9])
 ```compress(base64, scale, callback)``` 方法，该方法用于base64编码的压缩，compress有三个参数，参数1是源base64编码，参数2是一个回调函数，返回一个压缩后的base64编码，
 参数3是压缩比例(可选)是设置压缩比例(0~1之间)，0.5则表示在源base64的基础上压缩50%; 例如
 ```
+const { compress } = require("common-plugs")
 compress(base64, (newBase64)=>{
     //  newBase64压缩后的base64
 }, .5)
@@ -47,6 +51,7 @@ compress(base64, (newBase64)=>{
 参数2 (scale可选)为转成base64编码后需要压缩的比例(0~1之间)，0.5则表示在源base64的基础上压缩50%
 例如：
 ```
+const { netPathGetBlobAndBase64 } = require("common-plugs")
 const promise = netPathGetBlobAndBase64(url, scale)
 promise.then( res => {
      const obj = {blob: res[0], base64: res[1]}
@@ -55,6 +60,7 @@ promise.then( res => {
 # httpToCanvasGetBase64() 获取图片base64
 ```httpToCanvasGetBase64(url, scale)```方法，该方法与```netPathGetBlobAndBase64()```用法相同，不同的是返回的promise对象的参数中不是数组，而是一个base64编码，参数1是网络地址url，参数2是需要压缩的比例(0~1之间)例如
 ```
+const { httpToCanvasGetBase64 } = require("common-plugs")
 const promise = httpToCanvasGetBase64(url, scale)
 promise.then( res => {
     let base64 = res
@@ -71,26 +77,31 @@ promise.then( res => {
 如果是视频格式的话同样也可以为mp4、avi等等。
 用法：
 ```
+const { downloads } = require("common-plugs")
 const url = "https://t7.baidu.com/it/u=2006997523,200382512&fm=193&f=GIF"
 downloads(url, "我的图像", "jpeg")
 ```
 # base64ToFile() 方法 base64转成File对象
 ```base64ToFile(base64, fileName)```方法，该方有两个参数，参数1需要转换的base64，参数2(可选)是文件名，如不写则默认生成；返回一个File对象。例如：
 ```
+const { base64ToFile } = require("common-plugs")
 const file = base64ToFile(base64, "我的图像")
 ```
 # blobToFile() 方法是Blob对象转成File对象
 ```blobToFile(blob, fileName) ``` 该方法可用于将blob对象转成file对象，有两个参数，参数1是需要转换的blob对象，参数2(可选) 是blob对象的名称，不写系统将默认自动生成，例如：
 ```
+const { blobToFile } = require("common-plugs")
 const file = blobToFile(base64, "我的图像") 
 ```
 # fileToBase64()方法 File对象转base64
 ```fileToBase64(file, scale)```方法，该方法用于将一个file对象转成base64编码，参数2 (file)是file文件对象，参数2（可选0~1之间）压缩比例，是用于将转换后的base64进行按比例压缩。例如：
 ```
+const { fileToBase64 } = require("common-plugs")
 const base64 = fileToBase64(file, scale)
 ```
 # base64ToBlob()方法 base64转blob对象
 ```base64ToBlob(base64)```方法，用于将base64编码转成一个Blob对象，将返回一个Blob对象，有一个参数，参数为base64。例如：
 ```
+const { base64ToBlob } = require("common-plugs")
 const blob = base64ToBlob(base64)
 ```
