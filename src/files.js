@@ -17,8 +17,6 @@ const compress = (base64, callback, scale=1)=>{
         canvas.height = image.height
         cxt.drawImage(image, 0, 0, image.width, image.height)
         callback( canvas.toDataURL("image/jpeg", scale) )
-        canvas = null
-        cxt = null
     }
 }
 /**HTTP获取网络文件
@@ -219,6 +217,25 @@ function downloads(...params) {
         download( data, ...other)
     }
 }
+/**语音合成播报
+ *  @param _param是入参参数，
+ *  1 如何参数类型是对象的话则播放属性配置以对象的形式设置
+ *  2 如果是字符串类型则是播报内容，其他属性配置为默认配置
+ *  @return 返回一个播报对象，以控制播报播放、暂停、继续播放、停止功能
+ **/
+function voice(_param) {
+    const obj = {lang: 'zh-cn',text:'', volume: 1,pitch: 2,rate:1}
+    let utterThis = new window.SpeechSynthesisUtterance()
+    if(Object.prototype.toString.call(_param) === '[object Object]'){
+        utterThis = Object.assign(utterThis, _param)
+    }else{
+        utterThis = Object.assign(utterThis, obj)
+        utterThis.text = _param
+    }
+    const speak = window.speechSynthesis;
+    speak.speak(utterThis);
+    return speak
+}
 
 module.exports = {
     compress,
@@ -228,5 +245,6 @@ module.exports = {
     base64ToBlob,
     blobToFile,
     base64ToFile,
-    downloads
+    downloads,
+    voice
 }

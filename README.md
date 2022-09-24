@@ -131,5 +131,19 @@ watermark(url, 20, .5, 1)
 const { watermark } = require("common-plugs")
 const obj = {image: '我是水印', size: 20, opacity:1, rotate: 0, family:'Arial',scale:1.2}
 watermark(obj)
-
+```
+# voice 语音合成播报
+```voice(str)```方法，用于将文字合成语音，常见用途语音播报，语音提醒等。使用方法有两种入参配置方式。
+1. 对象入参```voice({lang: 'zh-cn',text:'你有新的订单', volume: 1,pitch: 2,rate:1})```, lang播报语言，text提示语，volume音量(0~1，默认1)，pitch音色(0~2,默认1)
+，rate语速(0.1~10, 默认1，值越大说话越快)；
+2. 字符串入参，```voice('你有新的订单')```，可以只传入说话文字内容，其余的参数配置在实现方法中有默认设置。
+```voice(str)```方法返回一个语音合成对象，用于控制语音播报的播放、暂停、继续播放、停止等
+示例：
+```
+const { voice } = require("common-plugs")
+const speech = voice("你有新的订单,请及时处理")
+speech.pause()   // 调用此方法是暂停
+speech.resume()  // 调用此方法是继续播报
+speech.cancel()  // 调用此方法是停止播报
+……
 ```

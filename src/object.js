@@ -111,12 +111,12 @@ function partition(A,lo,hi){
     return j
 }
 // 快速排序
-function sortArray(A,lo = 0, hi = A.length){
+function sortArray(A, bool =true, lo = 0, hi = A.length){
     if(hi - lo <= 1) return
     const p = partition(A,lo,hi);  // 返回一个中心点
     sortArray(A, lo, p);
     sortArray(A, p, hi);
-    return A
+    return bool ? A : A.sort((a,b)=> b - a)
 }
 /**--------快速排序结束-------**/
 
