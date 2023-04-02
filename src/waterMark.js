@@ -1,7 +1,6 @@
-const path = require("path").resolve(__dirname)
-const {mergeObject} = require(`${path}/object`)
-const {netPathGetBlobAndBase64} = require(`${path}/files`)
-const {REG_BASE64, REG_HTTP} = require(`${path}/constant`)
+const {mergeObject} = require(`./object`)
+const {netPathGetBlobAndBase64} = require(`./files`)
+const {REG_BASE64, REG_HTTP} = require(`./constant`)
 // 生成base64图像编码
 function getBase64 (data) {
     const {image, size, rotate, opacity, family, scale} = data

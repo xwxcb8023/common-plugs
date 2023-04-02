@@ -1,13 +1,12 @@
-const path = require("path").resolve(__dirname)
 /** 文件处理模块**/
-const files  = require(`${path}/files`)
+const files  = require(`./files`)
 /** 数据处理模块**/
-const datahandle  = require(`${path}/object`)
+const datahandle  = require(`./object`)
 /** 水印功能**/
-const watermark  = require(`${path}/constant`)
+const watermark  = require(`./constant`)
 /** 模块导出**/
 module.exports = {
-    ...files,
-    ...datahandle,
-    ...watermark
+  ...files,
+  ...datahandle,
+  ...watermark
 }

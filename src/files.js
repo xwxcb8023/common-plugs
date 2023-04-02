@@ -1,6 +1,5 @@
-const path = require("path").resolve(__dirname)
 // 常量值
-const { V_FORMAT, I_FORMAT, T_FORMAT, REG_BASE64, REG_HTTP}  = require(`${path}/constant`)
+const { V_FORMAT, I_FORMAT, T_FORMAT, REG_BASE64, REG_HTTP}  = require(`./constant`)
 /**压缩base64编码
  *  @param base64 需要压缩的源base64
  *  @param callback 回调函数
