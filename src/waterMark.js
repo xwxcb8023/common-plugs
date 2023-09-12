@@ -1,6 +1,10 @@
-const {mergeObject} = require(`./object`)
-const {netPathGetBlobAndBase64} = require(`./files`)
-const {REG_BASE64, REG_HTTP} = require(`./constant`)
+import objectData from "./object.js";
+import fileData from "./files.js";
+import common from "./constant.js";
+const {mergeObject} = objectData;
+const {netPathGetBlobAndBase64} = fileData;
+const {REG_BASE64, REG_HTTP} = common;
+
 // 生成base64图像编码
 function getBase64 (data) {
     const {image, size, rotate, opacity, family, scale} = data
@@ -10,8 +14,8 @@ function getBase64 (data) {
     const ctx = canvas.getContext('2d')
     let width = 100 * scale, height = 100 * scale;
     if(typeof image === 'string'){
-        width = size * image.length * scale;
-        height = size * image.length * scale;
+      width = size * image.length * scale;
+      height = size * image.length * scale;
     }
     canvas.width = width
     canvas.height = height
@@ -30,7 +34,6 @@ function getBase64 (data) {
         ctx.fillText(image, x,  y)
     }
     const base64 = canvas.toDataURL('image/webp')
-    console.log("====>>",base64)
     return base64
 }
 // 绘制
@@ -121,6 +124,6 @@ function watermark(...value){
     watchProxy(newObj)
 }
 
-module.exports = {
+export default{
     watermark
 }

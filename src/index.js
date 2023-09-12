@@ -1,12 +1,12 @@
 /** 文件处理模块**/
-const files  = require(`./files`)
+import files from "./files.js";
 /** 数据处理模块**/
-const datahandle  = require(`./object`)
+import datahandle from "./object.js";
 /** 水印功能**/
-const watermark  = require(`./constant`)
+import watermark from "./constant.js";
 /** 模块导出**/
-module.exports = {
+export default {
   ...files,
   ...datahandle,
   ...watermark
-}
+};

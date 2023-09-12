@@ -1,4 +1,4 @@
 /** 所有模块对象**/
-const result = require(`./src/index`)
+import result from "./src/index.js";
 /** 模块导出**/
-module.exports = { ...result }
+export default result;

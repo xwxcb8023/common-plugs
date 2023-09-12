@@ -8,7 +8,7 @@ const T_FORMAT = [".txt",".rtf",".doc",".docx",".xls",".xlsx",".csv",".ppt",".ht
 const REG_BASE64 = /^\s*data:([a-z]+\/[a-z0-9-+.]+(;[a-z-]+=[a-z0-9-]+)?)?(;base64)?,([a-z0-9!$&',()*+;=\-._~:@\/?%\s]*?)\s*$/i
 /** 网络有效地址**/
 const REG_HTTP = /^(http[s]{0,1}:\/\/|\\\\)/
-module.exports = {
+export default {
     V_FORMAT,
     I_FORMAT,
     T_FORMAT,
